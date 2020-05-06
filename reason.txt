@@ -1,0 +1,46 @@
+graphql - 사용 목적
+
+ : over-fetching - 요청한 데이터만 받아야 하는데, 기존 db 필요 없는 정보를 많이 요청
+ : under-fetching - 필요한 데이터를 위해서 너무 많은 요청을 보냄, join의 필요성과 같음
+
+ graphql 은 요청을 하나의 쿼리로 묶어줌
+
+
+request
+
+ query {
+     feed {
+         comments
+         likeNumber
+     },
+     notifications {
+         isRead
+     }
+     user{
+        username
+        profilePic
+     }
+ }
+
+response
+
+{
+    feed:[
+        {
+            comments:1
+            likeNumber:20
+        }
+    ],
+    notification [
+        {
+            isRead:true
+        },
+        {
+            isRead:false
+        }
+    ],
+    user:{
+        username:"seungbo"
+        profilePic : "http://"
+    }
+}
